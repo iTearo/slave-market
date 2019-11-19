@@ -11,6 +11,9 @@ use DateTime;
  */
 class LeaseHour
 {
+    const DEFAULT_DATE_TIME_FORMAT = 'Y-m-d H';
+
+
     /**
      * Время начала часа
      *
@@ -25,7 +28,7 @@ class LeaseHour
      */
     public function __construct(string $dateTime)
     {
-        $this->dateTime = DateTime::createFromFormat('Y-m-d H', $dateTime);
+        $this->dateTime = DateTime::createFromFormat(self::DEFAULT_DATE_TIME_FORMAT, $dateTime);
     }
 
     /**
@@ -35,7 +38,7 @@ class LeaseHour
      */
     public function getDateString(): string
     {
-        return $this->dateTime->format('Y-m-d H');
+        return $this->dateTime->format(self::DEFAULT_DATE_TIME_FORMAT);
     }
 
     /**
@@ -66,5 +69,10 @@ class LeaseHour
     public function getHour(): string
     {
         return $this->dateTime->format('H');
+    }
+
+    public function isIntersectsWith(LeaseHour $leaseHour): bool
+    {
+        return $this->getDateString() === $leaseHour->getDateString();
     }
 }

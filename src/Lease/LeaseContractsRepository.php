@@ -9,6 +9,8 @@ namespace SlaveMarket\Lease;
  */
 interface LeaseContractsRepository
 {
+    const DEFAULT_DATE_FORMAT = 'Y-m-d';
+
     /**
      * Возвращает список договоров аренды для раба, в которых заняты часы из указанного периода
      *
